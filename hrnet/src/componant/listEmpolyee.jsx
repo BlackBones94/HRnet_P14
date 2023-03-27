@@ -1,6 +1,6 @@
 
 
-function listEmployee() {
+function ListEmployee() {
     return (
         <div>
 
@@ -8,4 +8,4 @@ function listEmployee() {
     )
 }
 
-export default listEmployee;
+export default ListEmployee;
