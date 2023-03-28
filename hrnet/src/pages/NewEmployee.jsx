@@ -1,11 +1,11 @@
 import FormEmployee from "../componant/formEmployee";
 
-function Home() {
-    return (
+function NewEmployee() {
+    return(
         <div>
-            <FormEmployee/>
+            <FormEmployee />
         </div>
     )
 }
 
-export default Home;
+export default NewEmployee;

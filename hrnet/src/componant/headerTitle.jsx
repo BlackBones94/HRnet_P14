@@ -1,7 +1,6 @@
 
 
 
-
 function HeaderTitle() {
     return (
         <div class="title">

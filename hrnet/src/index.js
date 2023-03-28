@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import HeaderTitle from './componant/headerTitle';
+import NewEmployee from './pages/NewEmployee';
+import EmployeePage from './pages/EmployeePages';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +18,7 @@ root.render(
         <HeaderTitle />
         <Routes>
           <Route path='/' element = {<Home />}/>
+          <Route path='/Employee' element = {<EmployeePage />}/>
         </Routes>
       </Router>
   </React.StrictMode>

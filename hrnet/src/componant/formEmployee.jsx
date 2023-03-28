@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 
 
 
 function FormEmployee() {
     return(
         <div class="container">
-            <a href="employee-list.html">View Current Employees</a>
+            <Link to='/Employee'>View Current Employees</Link>
             <h2>Create Employee</h2>
             <form action="#" id="create-employee">
                 <label for="first-name">First Name</label>
