@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { validate } from "../store/employeeCreateSlice";
 import { useState } from "react";
+import states from "../Data/states.json"
 
 function FormEmployee() {
 
@@ -16,7 +17,10 @@ function FormEmployee() {
     const [zipCodeInput, setZipCodeInput] = useState('');
     const [valueDepartmentSelect, setValueDepartmentSelect] = useState('');
     const [valueStateSelect, setValueStateSelect] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
+    const form = document.getElementById('create-employee')
+    
 
     const handleSubmitForm = e => {
         e.preventDefault();
@@ -31,8 +35,31 @@ function FormEmployee() {
             startDateInput,
             birthDateInput,
         }))
+        if(lastNameInput || firstNameInput 
+            // || streetInput || cityInput || valueStateSelect || valueDepartmentSelect|| zipCodeInput || startDateInput ||birthDateInput
+             === '') {
+            alert('complete le formulaire')
+            form.reset()
+        }
+        
+
+        console.log(dispatch(validate({
+            firstNameInput,
+            lastNameInput,
+            streetInput,
+            cityInput,
+            valueStateSelect,
+            valueDepartmentSelect,
+            zipCodeInput,
+            startDateInput,
+            birthDateInput,
+        })))
     }
 
+
+    // function openModal(){
+    //     setIsModalOpen(true);
+    // }
 
     return(
         <div class="container">
@@ -43,32 +70,43 @@ function FormEmployee() {
                 <input type="text" id="first-name" onChange={e => setFirstNameInput(e.target.value)} />
 
                 <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" />
+                <input type="text" id="last-name" onChange={e => setLastNameInput(e.target.value)}/>
 
                 <label for="date-of-birth">Date of Birth</label>
-                <input id="date-of-birth" type="text" />
+                <input id="date-of-birth" type="date"onChange={e => setBirthDateInput(e.target.value)} />
 
                 <label for="start-date">Start Date</label>
-                <input id="start-date" type="text" />
+                <input id="start-date" type="date" onChange={e => setStartDateInput(e.target.value)}/>
 
                 <fieldset class="address">
                     <legend>Address</legend>
 
                     <label for="street">Street</label>
-                    <input id="street" type="text" />
+                    <input id="street" type="text" onChange={e => setStreetInput(e.target.value)} />
 
                     <label for="city">City</label>
-                    <input id="city" type="text" />
+                    <input id="city" type="text" onChange={e => setCityInput(e.target.value)}/>
 
                     <label for="state">State</label>
-                    <select name="state" id="state"></select>
+                    <select
+                        name="state"
+                        id="state"
+                        onChange={e => setValueStateSelect(e.target.value)}
+                        >
+                        <option value="">Choisir un state</option>
+                        {states.map((state) => {
+                            return <option key={state.stateID}>
+                                {state.name}
+                            </option>
+                        })}
+                    </select>
 
                     <label for="zip-code">Zip Code</label>
-                    <input id="zip-code" type="number" />
+                    <input id="zip-code" type="number" onChange={e => setZipCodeInput(e.target.value)} />
                 </fieldset>
 
                 <label for="department">Department</label>
-                <select name="department" id="department">
+                <select name="department" id="department" onChange={e => setValueDepartmentSelect(e.target.value)}>
                     <option>Sales</option>
                     <option>Marketing</option>
                     <option>Engineering</option>
