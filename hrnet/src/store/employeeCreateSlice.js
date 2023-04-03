@@ -1,18 +1,25 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-    inputState : []
-}
+const initialState = ({
+    inputState : [],
+    // firstName : "",
+})
 
 
-export const userCreateSlice = createSlice({
+const userCreateSlice = createSlice({
     name: 'createEmployee',
     initialState,
     reducers: {
         validate:(state,action) => {
             state.inputState.push(action.payload)
-        }
+            // state.inputState = action.payload
+            // state.test = true
+        },
+
+        // setTest:(state)=>{
+        //     state.test = true
+        // }
     }
 })
 

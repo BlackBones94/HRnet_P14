@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { userCreateSlice } from "../store/employeeCreateSlice";
-
+import  userCreateSlice  from "../store/employeeCreateSlice";
+// import  setTestReducer  from "../store/employeeCreateSlice";
 
 const store = configureStore({
     reducer: {
-        createEmployee : userCreateSlice.reducer,
+        validate : userCreateSlice,
+        // setTest : setTestReducer,
     },
     composeWithDevTools
 });

@@ -4,6 +4,7 @@ import { validate } from "../store/employeeCreateSlice";
 import { useState } from "react";
 import states from "../Data/states.json"
 
+
 function FormEmployee() {
 
     const dispatch = useDispatch();
@@ -34,26 +35,26 @@ function FormEmployee() {
             zipCodeInput,
             startDateInput,
             birthDateInput,
-        }))
-        if(lastNameInput || firstNameInput 
-            // || streetInput || cityInput || valueStateSelect || valueDepartmentSelect|| zipCodeInput || startDateInput ||birthDateInput
-             === '') {
-            alert('complete le formulaire')
-            form.reset()
-        }
+    }))
+        // if(lastNameInput || firstNameInput 
+        //     // || streetInput || cityInput || valueStateSelect || valueDepartmentSelect|| zipCodeInput || startDateInput ||birthDateInput
+        //      === '') {
+        //     alert('complete le formulaire')
+        //     form.reset()
+        // }
         
 
-        console.log(dispatch(validate({
-            firstNameInput,
-            lastNameInput,
-            streetInput,
-            cityInput,
-            valueStateSelect,
-            valueDepartmentSelect,
-            zipCodeInput,
-            startDateInput,
-            birthDateInput,
-        })))
+        // console.log(dispatch(validate({
+        //     firstNameInput,
+        //     lastNameInput,
+        //     streetInput,
+        //     cityInput,
+        //     valueStateSelect,
+        //     valueDepartmentSelect,
+        //     zipCodeInput,
+        //     startDateInput,
+        //     birthDateInput,
+        // })))
     }
 
 
