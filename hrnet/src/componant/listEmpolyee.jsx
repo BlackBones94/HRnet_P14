@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import DataTableComponent from "./dataTable";
 
 function ListEmployee() {
     return (
@@ -7,6 +7,7 @@ function ListEmployee() {
             <h1>Current Employees</h1>
             <table id="employee-table" class="display"></table>
             <Link to="/">Home</Link>
+            <DataTableComponent />
         </div>
     )
 }

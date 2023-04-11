@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { validate } from "../store/employeeCreateSlice";
 import { useState } from "react";
-import states from "../Data/states.json"
+import states from "../Data/states.json";
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
+import SelectOption from "./selected";
 
 function FormEmployee() {
 
@@ -11,8 +14,8 @@ function FormEmployee() {
 
     const [firstNameInput, setFirstNameInput] = useState('');
     const [lastNameInput, setLastNameInput] = useState('');
-    const [birthDateInput, setBirthDateInput] = useState('');
-    const [startDateInput, setStartDateInput] = useState('');
+    const [birthDateInput, setBirthDateInput] = useState(new Date());
+    const [startDateInput, setStartDateInput] = useState(new Date());
     const [streetInput, setStreetInput] = useState('');
     const [cityInput, setCityInput] = useState('');
     const [zipCodeInput, setZipCodeInput] = useState('');
@@ -74,10 +77,10 @@ function FormEmployee() {
                 <input type="text" id="last-name" onChange={e => setLastNameInput(e.target.value)}/>
 
                 <label for="date-of-birth">Date of Birth</label>
-                <input id="date-of-birth" type="date"onChange={e => setBirthDateInput(e.target.value)} />
+                <DatePicker id="date-of-birth" type="date" selected={birthDateInput} onChange={date => setBirthDateInput(date)}/>
 
                 <label for="start-date">Start Date</label>
-                <input id="start-date" type="date" onChange={e => setStartDateInput(e.target.value)}/>
+                <DatePicker id="start-date" type="date" selected={startDateInput} onChange={date => setStartDateInput(date)} />
 
                 <fieldset class="address">
                     <legend>Address</legend>
@@ -108,11 +111,7 @@ function FormEmployee() {
 
                 <label for="department">Department</label>
                 <select name="department" id="department" onChange={e => setValueDepartmentSelect(e.target.value)}>
-                    <option>Sales</option>
-                    <option>Marketing</option>
-                    <option>Engineering</option>
-                    <option>Human Resources</option>
-                    <option>Legal</option>
+                    <SelectOption />
                 </select>
             </form>
 
