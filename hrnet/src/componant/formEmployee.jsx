@@ -5,6 +5,8 @@ import { useState } from "react";
 import states from "../Data/states.json";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import Modal from "modal-maker/dist";
+
 
 import SelectOption from "./selected";
 
@@ -12,8 +14,8 @@ function FormEmployee() {
 
     const dispatch = useDispatch();
 
-    const [firstNameInput, setFirstNameInput] = useState('');
-    const [lastNameInput, setLastNameInput] = useState('');
+    const [firstNameInput, setFirstNameInput] = useState("");
+    const [lastNameInput, setLastNameInput] = useState("");
     const [birthDateInput, setBirthDateInput] = useState(new Date());
     const [startDateInput, setStartDateInput] = useState(new Date());
     const [streetInput, setStreetInput] = useState('');
@@ -23,47 +25,46 @@ function FormEmployee() {
     const [valueStateSelect, setValueStateSelect] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const form = document.getElementById('create-employee')
-    
+    const [buttonDisabled, setButtonDisabled] = useState(false);
 
-    const handleSubmitForm = e => {
+    // const form = document.getElementById('create-employee')
+
+    function openModal(){
+        setIsModalOpen(true);
+    }
+
+    function closeModal(e){
         e.preventDefault();
-        dispatch(validate({
-            firstNameInput,
-            lastNameInput,
-            streetInput,
-            cityInput,
-            valueStateSelect,
-            valueDepartmentSelect,
-            zipCodeInput,
-            startDateInput,
-            birthDateInput,
-    }))
-        // if(lastNameInput || firstNameInput 
-        //     // || streetInput || cityInput || valueStateSelect || valueDepartmentSelect|| zipCodeInput || startDateInput ||birthDateInput
-        //      === '') {
-        //     alert('complete le formulaire')
-        //     form.reset()
-        // }
-        
+        setIsModalOpen(false)
+    } 
 
-        // console.log(dispatch(validate({
-        //     firstNameInput,
-        //     lastNameInput,
-        //     streetInput,
-        //     cityInput,
-        //     valueStateSelect,
-        //     valueDepartmentSelect,
-        //     zipCodeInput,
-        //     startDateInput,
-        //     birthDateInput,
-        // })))
+
+    
+    const handleSubmitForm = e => {
+        if(  lastNameInput === "" || firstNameInput === "" || streetInput === "" || cityInput === "" || zipCodeInput === "" || valueDepartmentSelect === "" || valueStateSelect === "") {
+            // alert('complete le formulaire')
+            // form.reset()
+            setButtonDisabled(false)
+        } else {
+            e.preventDefault();
+            dispatch(validate({
+                firstNameInput,
+                lastNameInput,
+                streetInput,
+                cityInput,
+                valueStateSelect,
+                valueDepartmentSelect,
+                zipCodeInput,
+                startDateInput,
+                birthDateInput,
+        }))
+            openModal() 
+        }
     }
 
 
-    // function openModal(){
-    //     setIsModalOpen(true);
-    // }
+
+    console.log(lastNameInput)
 
     return(
         <div class="container">
@@ -115,7 +116,12 @@ function FormEmployee() {
                 </select>
             </form>
 
-            <button onClick={handleSubmitForm}>Save</button>
+            <button disabled={buttonDisabled} type="submit" className="btn-save" onClick={handleSubmitForm}>Save</button>
+            <Modal
+                isOpen = {isModalOpen}
+                closeModal= {closeModal}
+
+            />
         </div>
     )
 }
