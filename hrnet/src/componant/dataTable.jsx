@@ -1,6 +1,6 @@
 import { DataTable } from '@lephenix47/react-datatable' ;
 import { useSelector } from 'react-redux';
-import { validate } from '../store/employeeCreateSlice';
+// import { validate } from '../store/employeeCreateSlice';
 import React from 'react';
 
 // const data = [
