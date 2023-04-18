@@ -29,7 +29,6 @@ function FormEmployee() {
 
     const [buttonDisabled, setButtonDisabled] = useState(false);
 
-    // const form = document.getElementById('create-employee')
 
     function openModal(){
         setIsModalOpen(true);
@@ -44,8 +43,6 @@ function FormEmployee() {
     
     const handleSubmitForm = e => {
         if(  lastNameInput === "" || firstNameInput === "" || streetInput === "" || cityInput === "" || zipCodeInput === "" || valueDepartmentSelect === "" || valueStateSelect === "") {
-            // alert('complete le formulaire')
-            // form.reset()
             setButtonDisabled(false)
             setErrorMessage("Formulaire Incomplet !")
         } else {

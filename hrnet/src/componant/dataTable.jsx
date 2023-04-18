@@ -19,12 +19,6 @@ import React from 'react';
 function DataTableComponent() {
 
 	const Data = useSelector((state) => state.validate)
-
-	// const data = React.useMemo(
-	// 	() => Data.inputState,
-	// 	[Data.inputState]
-	// )
-  
 	const data = Data.inputState
 	
 	return (
