@@ -5,8 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: white; */
-  /* color: black; */
+  background-color: white;
+  color: black;
 }
 
 code {
@@ -55,6 +55,8 @@ label {
 .modal{
   display: flex;
   justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 15px;
 }
 
 .txtModal{
@@ -69,11 +71,11 @@ label {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  bottom: 40px;
+  bottom: 10px;
   left: 15px;
   font-weight: 600;
   background-color: black;
-  border: none;
+  border: 1px solid black;
 }
 
 .modalDesactivate{
@@ -105,6 +107,10 @@ label {
   margin-bottom: 15px;
 }
 
+.btn-save:disabled{
+  border: 1px solid red;
+}
+
 label{
   font-size: large;
   font-weight: 600;
@@ -125,4 +131,17 @@ label{
   background-color: white;
   border-radius: 5px;
   height: 25px;
+}
+
+.error{
+  text-align: center;
+  color: red;
+}
+
+.linkEmployee{
+  color: black;
+}
+
+.linkHome{
+  color: black;
 }

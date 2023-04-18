@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = ({
     inputState : [],
-    // firstName : "",
 })
 
 
@@ -13,13 +12,7 @@ const userCreateSlice = createSlice({
     reducers: {
         validate:(state,action) => {
             state.inputState.push(action.payload)
-            // state.inputState = action.payload
-            // state.test = true
         },
-
-        // setTest:(state)=>{
-        //     state.test = true
-        // }
     }
 })
 

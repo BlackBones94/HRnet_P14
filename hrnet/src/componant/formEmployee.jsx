@@ -25,6 +25,8 @@ function FormEmployee() {
     const [valueStateSelect, setValueStateSelect] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false)
 
+    const [errorMessage, setErrorMessage] = useState('')
+
     const [buttonDisabled, setButtonDisabled] = useState(false);
 
     // const form = document.getElementById('create-employee')
@@ -45,6 +47,7 @@ function FormEmployee() {
             // alert('complete le formulaire')
             // form.reset()
             setButtonDisabled(false)
+            setErrorMessage("Formulaire Incomplet !")
         } else {
             e.preventDefault();
             dispatch(validate({
@@ -58,6 +61,7 @@ function FormEmployee() {
                 startDateInput,
                 birthDateInput,
         }))
+            setErrorMessage('')
             openModal() 
         }
     }
@@ -68,7 +72,7 @@ function FormEmployee() {
 
     return(
         <div class="container">
-            <Link to='/Employee'>View Current Employees</Link>
+            <Link className="linkEmployee" to='/Employee'>View Current Employees</Link>
             <h2>Create Employee</h2>
             <form action="#" id="create-employee">
                 <label for="first-name">First Name</label>
@@ -115,8 +119,11 @@ function FormEmployee() {
                     <SelectOption />
                 </select>
             </form>
-
-            <button disabled={buttonDisabled} type="submit" className="btn-save" onClick={handleSubmitForm}>Save</button>
+            
+            <div>
+                {errorMessage && <div className="error">{errorMessage}</div>}
+                <button disabled={buttonDisabled} type="submit" className="btn-save" onClick={handleSubmitForm}>Save</button>
+            </div>           
             <Modal
                 isOpen = {isModalOpen}
                 closeModal= {closeModal}
